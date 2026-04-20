@@ -30,13 +30,14 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/hola-devops:latest .
+      run: docker build -t checo1977/hola-devops:latest .
 
     - name: Push Docker image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/hola-devops:latest
+      run: docker push checo1977/hola-devops:latest
 
     - name: Deploy to Render
       run: |
         curl -X POST \
         -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
         https://api.render.com/v1/services/<SERVICE_ID>/deploys
+
